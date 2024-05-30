@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consulta de Cliente</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container mx-auto w-50">
+    <h1>BancAndes</h1>
+    <div>
+        <form th:action="@{/consultarCliente}" method="get">
+            <div class="mb-3">
+                <label for="numeroDocumento">Ingrese el numero de Documento:</label>
+                <input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+        </form>
+    </div>
+</body>
+</html>

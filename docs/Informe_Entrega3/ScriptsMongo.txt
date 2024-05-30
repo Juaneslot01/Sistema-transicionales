@@ -1,0 +1,192 @@
+ESQUEMA DE VALIDACIÓN DE LA COLECCIÓN OPERACIONESCUENTA:
+
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      'tipo',
+      'idpuntoatencion',
+      'valor',
+      'numcuentaprincipal',
+      '_id',
+      'fecha'
+    ],
+    properties: {
+      tipo: {
+        bsonType: 'string'
+      },
+      idpuntoatencion: {
+        bsonType: 'int'
+      },
+      valor: {
+        bsonType: 'int'
+      },
+      numcuentaprincipal: {
+        bsonType: 'int'
+      },
+      _id: {
+        bsonType: 'int'
+      },
+      fecha: {
+        bsonType: 'string'
+      },
+      numcuentadestino: {
+        bsonType: [
+          'int',
+          'null'
+        ]
+      }
+    }
+  }
+}
+
+
+ESQUEMA DE VALIDACIÓN DE LA COLECCIÓN OFICINAS:
+
+
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      'nombre',
+      'direccion',
+      '_id',
+      'nombregerente',
+      'numdocgerente'
+    ],
+    properties: {
+      nombre: {
+        bsonType: 'string'
+      },
+      direccion: {
+        bsonType: 'string'
+      },
+      _id: {
+        bsonType: 'int'
+      },
+      nombregerente: {
+        bsonType: 'string'
+      },
+      numdocgerente: {
+        bsonType: 'int'
+      },
+      puntosdeatencion: {
+        bsonType: 'array',
+        items: {
+          bsonType: 'object',
+          required: [
+            'idPunto',
+            'ubicacion',
+            'tipo'
+          ],
+          properties: {
+            idPunto: {
+              bsonType: 'int'
+            },
+            ubicacion: {
+              bsonType: 'string'
+            },
+            tipo: {
+              bsonType: 'string'
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+ESQUEMA DE VALIDACIÓN DE LA COLECCIÓN CLIENTES:
+
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      '_id',
+      'tipodocumento',
+      'nombre',
+      'nacionalidad',
+      'direccionfisica',
+      'direccionelectronica',
+      'telefono',
+      'ciudad',
+      'departamento',
+      'codigopostal',
+      'password'
+    ],
+    properties: {
+      _id: {
+        bsonType: 'int'
+      },
+      tipodocumento: {
+        bsonType: 'string'
+      },
+      nombre: {
+        bsonType: 'string'
+      },
+      nacionalidad: {
+        bsonType: 'string'
+      },
+      direccionfisica: {
+        bsonType: 'string'
+      },
+      direccionelectronica: {
+        bsonType: 'string'
+      },
+      telefono: {
+        bsonType: 'string'
+      },
+      ciudad: {
+        bsonType: 'string'
+      },
+      departamento: {
+        bsonType: 'string'
+      },
+      codigopostal: {
+        bsonType: 'int'
+      },
+      password: {
+        bsonType: 'string'
+      },
+      cuentas: {
+        bsonType: 'array',
+        items: {
+          bsonType: 'object',
+          required: [
+            'numcuenta',
+            'tipocuenta',
+            'saldo',
+            'estado',
+            'fechaultimatransaccion',
+            'fechacreacion',
+            'id_oficina'
+          ],
+          properties: {
+            numcuenta: {
+              bsonType: 'int'
+            },
+            tipocuenta: {
+              bsonType: 'string'
+            },
+            saldo: {
+              bsonType: 'int'
+            },
+            estado: {
+              bsonType: 'string'
+            },
+            fechaultimatransaccion: {
+              bsonType: 'date'
+            },
+            fechacreacion: {
+              bsonType: 'date'
+            },
+            id_oficina: {
+              bsonType: 'int'
+            }
+          }
+        }
+      }
+    }
+  }
+}

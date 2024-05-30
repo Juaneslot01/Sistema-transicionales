@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Crear Cliente</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+</br>
+    <form th:action="@{/clientes/new/save}" method="post">
+        <div th:replace="~{fragments/clienteForm :: clienteForm(titulo='Crear Cliente')}"></div>    
+    </form>
+    
+</body>
+</html>

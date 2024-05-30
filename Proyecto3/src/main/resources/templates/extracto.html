@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Generar Extracto</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container mx-auto w-25">
+        <h1>Generar Extracto</h1>
+        <form method="get">
+            <div class="form-group">
+                <label for="numeroCuenta">Número de Cuenta:</label>
+                <input type="text" class="form-control" id="numeroCuenta" name="numeroCuenta" required>
+                <label for="fecha">Mes en formato YY-MM:</label>
+                <input type="text" class="form-control" id="fecha" name="fecha" required>
+            </div>
+            <button type="submit" th:formaction="@{/generar-extracto}" class="btn btn-primary">Generar Extracto</button>
+        </form>
+    </div>
+</body>
+</html>

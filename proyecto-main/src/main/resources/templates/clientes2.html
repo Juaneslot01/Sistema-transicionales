@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consulta de Cliente</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div>
+        <h1>Consulta de Cliente</h1>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre Cliente</th>
+                    <th>Número de Cuenta</th>
+                    <th>Saldo de Cuenta</th>
+                    <th>Oficina</th>
+                    <th>ID Préstamo</th>
+                    <th>Monto Préstamo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="resultado : ${resultados}">
+                    <tr>
+                        <td th:text="${resultado[0]}"></td>
+                        <td th:text="${resultado[1]}"></td>
+                        <td th:text="${resultado[2]}"></td>
+                        <td th:text="${resultado[3]}"></td>
+                        <td th:text="${resultado[4]}"></td>
+                        <td th:text="${resultado[5]}"></td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+        <div>
+            <a th:href="@{/}" class="btn btn-primary">Volver Atrás</a>
+        </div>
+    </div>
+</body>
+</html>

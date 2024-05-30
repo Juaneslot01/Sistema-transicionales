@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cliente</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container mx-auto w-50">
+
+    <h1>BancAndes</h1>
+    <p>Para filtrar por fecha se usa el formato YYYY/MM/DD (por ejemplo, "2024-04-18").</p>
+    <p>Para filtrar por rango de saldos formato saldo1-saldo2 (por ejemplo, "1-5000000").</p>
+
+    <div>
+        <form th:action="@{/filtrarCuentas}" method="get">
+            <div class="mb-3">
+                <label for="filtro">Seleccione un filtro:</label>
+                <select id="filtro" name="filtro" class="form-select">
+                    <option value="tipo">Tipo de Cuenta</option>
+                    <option value="saldo">Rango de Saldo</option>
+                    <option value="fecha">Fecha de Creación</option>
+                    <option value="fecha_ultimo_movimiento">Fecha del Último Movimiento</option>
+                    <option value="cliente">Número de documento del cliente</option>
+                </select>
+            </div>
+            <input type="hidden" id="filtroTipo" name="filtroTipo" th:value="${filtroTipo}" />
+            <div class="mb-3">
+                <label for="valorFiltro">Ingrese el valor del filtro:</label>
+                <input type="text" id="valorFiltro" name="valorFiltro" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+        </form>
+    </div>
+    <br/>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones de Préstamo</title>
+    <link rel="stylesheet" type= "text/css" th:href= "@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div>
+        <h1>Lista de Operaciones de Préstamo</h1>
+        <table class= "table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Tipo de Operación</th>
+                    <th>Valor</th>
+                    <th>Fecha</th>
+                    <th>Punto de Atención</th>
+                    <th>Número de Préstamo</th>
+                </tr>
+            </thead>
+            <th:block th:each="operacion : ${operacionesPrestamo}">
+                <tr>
+                    <td th:text="${operacion.id}"></td>
+                    <td th:text="${operacion.tipoOperacion}"></td>
+                    <td th:text="${operacion.valor}"></td>
+                    <td th:text="${operacion.fecha}"></td>
+                    <td th:text="${operacion.puntoAtencion.id}"></td>
+                    <td th:text="${operacion.prestamo.numPrestamo}"></td>
+                </tr>
+            </th:block>
+        </table>
+        <div>
+            <a th:href="@{/}" class="btn btn-primary">Volver Atrás</a>
+            <a th:href="@{operacionesPrestamo/new}" class="btn btn-primary">Añadir Operacion</a>
+        </div>
+    </div>
+</body>
+</html>

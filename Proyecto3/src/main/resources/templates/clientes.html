@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+    <link rel="stylesheet" type= "text/css" th:href= "@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div>
+        <h1>Lista de Clientes</h1>
+        <table class= "table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>NumeroDocumento</th>
+                    <th>TipoDocumento</th>
+                    <th>Nombre</th>
+                    <th>Nacionalidad</th>
+                    <th>DireccionFisica</th>
+                    <th>DireccionElectronica</th>
+                    <th>Telefono</th>
+                    <th>Ciudad</th>
+                    <th>Departamento</th>
+                    <th>CodigoPostal</th>
+                    <th>Password</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <th:block th:each="cliente:${clientes}">
+                <tr>
+                    <td th:text="${cliente.numerodocumento}"></td>
+                    <td th:text="${cliente.tipodocumento}"></td>
+                    <td th:text="${cliente.nombre}"></td>
+                    <td th:text="${cliente.nacionalidad}"></td>
+                    <td th:text="${cliente.direccionfisica}"></td>
+                    <td th:text="${cliente.direccionelectronica}"></td>
+                    <td th:text="${cliente.telefono}"></td>
+                    <td th:text="${cliente.ciudad}"></td>
+                    <td th:text="${cliente.departamento}"></td>
+                    <td th:text="${cliente.codigopostal}"></td>
+                    <td th:text="${cliente.password}"></td>
+                </tr>
+            </th:block>
+        </table>
+        <div>
+            <a th:href="@{/}" class="btn btn-primary">Volver Atras</a>
+            <a th:href="@{clientes/new}" class="btn btn-primary">Añadir Cliente</a>
+        </div>
+    </div>
+</body>
+</html>

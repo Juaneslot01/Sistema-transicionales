@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cliente</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container mx-auto w-25">
+
+    <h1>BancAndes</h1>
+    <div>
+        <form th:action="@{/filtrarCuentas}" method="get">
+            <div class="mb-2">
+                <label for="Filtro">Seleccione un filtro:</label>
+                <select id="Filtro" name="Filtro" class="form-select">
+                    <option value="tipo">Tipo de Cuenta</option>
+                    <option value="saldo">Saldo</option>
+                </select>
+            </div>
+            <div class="mb-2">
+                <label for="valorFiltro">Ingrese el valor del filtro:</label>
+                <input type="text" id="valorFiltro" name="valorFiltro" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+        </form>
+    </div>
+    <br/>
+
+</div>
+</body>
+</html>

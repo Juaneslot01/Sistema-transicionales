@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleados</title>
+    <link rel="stylesheet" type= "text/css" th:href= "@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div>
+        <h1>Lista de Empleados</h1>
+        <table class= "table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Tipo Documento</th>
+                    <th>Número Documento</th>
+                    <th>Nombre</th>
+                    <th>Nacionalidad</th>
+                    <th>Dirección Física</th>
+                    <th>Dirección Electrónica</th>
+                    <th>Teléfono</th>
+                    <th>Ciudad</th>
+                    <th>Departamento</th>
+                    <th>Código Postal</th>
+                    <th>Password</th>
+                    <th>Punto Atención</th>
+                    <th>Cargo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <th:block th:each="empleado : ${empleados}">
+                <tr>
+                    <td th:text="${empleado.tipoDocumento}"></td>
+                    <td th:text="${empleado.numeroDocumento}"></td>
+                    <td th:text="${empleado.nombre}"></td>
+                    <td th:text="${empleado.nacionalidad}"></td>
+                    <td th:text="${empleado.direccionFisica}"></td>
+                    <td th:text="${empleado.direccionElectronica}"></td>
+                    <td th:text="${empleado.telefono}"></td>
+                    <td th:text="${empleado.ciudad}"></td>
+                    <td th:text="${empleado.departamento}"></td>
+                    <td th:text="${empleado.codigoPostal}"></td>
+                    <td th:text="${empleado.password}"></td>
+                    <td th:text="${empleado.puntoAtencion?.id ?: 'No Punto Atencion'}"></td>
+                    <td th:text="${empleado.cargo}"></td>
+                    <td>
+                        <a th:href="@{empleados/{id}/delete(id=${empleado.numeroDocumento})}"
+                        onclick="return confirm('¿Estás seguro de borrar este empleado?')">
+                            Borrar
+                        </a>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+        <div>
+            <a th:href="@{/}" class="btn btn-primary">Volver Atrás</a>
+            <a th:href="@{empleados/new}" class="btn btn-primary">Añadir Empleado</a>
+        </div>
+    </div>
+</body>
+</html>

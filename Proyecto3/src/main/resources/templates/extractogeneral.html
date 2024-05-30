@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Extracto de Cuenta</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Extracto de Cuenta</h1>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Número de Cuenta</th>
+                    <th>Saldo al iniciar el mes</th>
+                    <th>Saldo después de las operaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td th:text="${cuenta.getNumcuenta()}"></td>
+                    <td th:text="${saldofinal}"></td>
+                    <td th:text="${saldoInicial}"></td>
+                </tr>
+            </tbody>
+                
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Tipo de Operación</th>
+                                    <th>Valor</th>
+                                    <th>Id Operación</th>
+                                    <th>Id Punto Atención</th>
+                                    <th>Número Cuenta de Destino (Si aplica)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <h2>Operaciones</h2>
+                                <tr th:each="operacion : ${operacionesCuentas}">
+                                    <td th:text="${operacion.fecha}"></td>
+                                    <td th:text="${operacion.tipo}"></td>
+                                    <td th:text="${operacion.valor}"></td>
+                                    <td th:text="${operacion.id}"></td>
+                                    <td th:text="${operacion.idpuntoatencion}"></td>
+                                    <td th:text="${operacion.numcuentadestino}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+            </tbody>
+        </table>
+        <a href="/" class="btn btn-primary">Volver</a>
+    </div>
+</body>
+</html>

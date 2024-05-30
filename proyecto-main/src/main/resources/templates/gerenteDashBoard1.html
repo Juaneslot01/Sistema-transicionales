@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+    <link rel="stylesheet" type= "text/css" th:href= "@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div>
+        <h1>Lista de Clientes</h1>
+        <table class= "table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>NumeroDocumento</th>
+                    <th>TipoDocumento</th>
+                    <th>Nombre</th>
+                    <th>Nacionalidad</th>
+                    <th>DireccionFisica</th>
+                    <th>DireccionElectronica</th>
+                    <th>Telefono</th>
+                    <th>Ciudad</th>
+                    <th>Departamento</th>
+                    <th>CodigoPostal</th>
+                    <th>Password</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="cliente:${clientes}">
+                    <tr>
+                        <td th:text="${cliente.numeroDocumento}"></td>
+                        <td th:text="${cliente.tipoDocumento}"></td>
+                        <td th:text="${cliente.nombre}"></td>
+                        <td th:text="${cliente.nacionalidad}"></td>
+                        <td th:text="${cliente.direccionFisica}"></td>
+                        <td th:text="${cliente.direccionElectronica}"></td>
+                        <td th:text="${cliente.telefono}"></td>
+                        <td th:text="${cliente.ciudad}"></td>
+                        <td th:text="${cliente.departamento}"></td>
+                        <td th:text="${cliente.codigoPostal}"></td>
+                        <td th:text="${cliente.password}"></td>
+                        <td>
+                            <a th:href="@{clientes/{id}/delete(id=${cliente.numeroDocumento})}"
+                            onclick= "return confirm('¿Estas seguro de borrar este cliente?')">
+                                Borrar
+                            </a>
+                        </td>
+                    </tr>
+                    <!-- Filas para las cuentas del cliente -->
+                    <tr>
+                        <td colspan="12">
+                            <h4>Cuentas del Cliente</h4>
+                            <table class="table table-hover table-bordered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>NumeroCuenta</th>
+                                        <th>Saldo</th>
+                                        <th>Tipo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <th:block th:each="cuenta : ${cliente.cuentas}">
+                                        <tr>
+                                            <td th:text="${cuenta.numeroCuenta}"></td>
+                                            <td th:text="${cuenta.saldo}"></td>
+                                            <td th:text="${cuenta.tipo}"></td>
+                                        </tr>
+                                    </th:block>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- Filas para los préstamos del cliente -->
+                    <tr>
+                        <td colspan="12">
+                            <h4>Préstamos del Cliente</h4>
+                            <table class="table table-hover table-bordered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>NumeroPrestamo</th>
+                                        <th>Saldo</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <th:block th:each="prestamo : ${cliente.prestamos}">
+                                        <tr>
+                                            <td th:text="${prestamo.numeroPrestamo}"></td>
+                                            <td th:text="${prestamo.saldo}"></td>
+                                            <td th:text="${prestamo.estado}"></td>
+                                        </tr>
+                                    </th:block>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+        <div>
+            <a th:href="@{/}" class="btn btn-primary">Volver Atras</a>
+            <a th:href="@{clientes/new}" class="btn btn-primary">Añadir Cliente</a>
+        </div>
+    </div>
+</body>
+</html>

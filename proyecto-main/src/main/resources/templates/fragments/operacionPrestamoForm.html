@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Operación de Prestamo</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div th:fragment="operacionPrestamoForm(titulo)" class="container border border-2 w-25">
+        <h1 class="text-center" th:text="${titulo}"></h1>
+        <form>
+            <label class="col-form-label">Tipo de Operación de Prestamo</label>
+            <input class="form-control" id="tipoOperacion" 
+            name="tipoOperacion" required th:value="${operacionPrestamo.tipoOperacion}"/>
+            <label class="col-form-label">Valor</label>
+            <input class="form-control" type="number" id="valor"
+            name="valor" required th:value="${operacionPrestamo.valor}"/>
+            <label class="col-form-label">Fecha</label>
+            <input class="form-control" type="date" id="fecha"
+            name="fecha" required th:value="${operacionPrestamo.fecha != null ? #dates.format(operacionPrestamo.fecha, 'yyyy-MM-dd') : ''}"/>
+            <label class="col-form-label">ID Punto de Atención</label>
+            <input class="form-control" type="text" id="idPuntoAtencion" 
+            name="idPuntoAtencion" required th:value="${operacionPrestamo.puntoAtencion}"/>
+            <label class="col-form-label">Número de Prestamo</label>
+            <input class="form-control" type="text" id="numPrestamo" name="numPrestamo" required th:value="${operacionPrestamo.prestamo}"/><br>
+            <div class="text-center">
+                <input type="submit" value="Guardar" class="btn btn-primary"/>
+                <a th:href="@{/operacionesPrestamo}" class="btn btn-primary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cliente</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container mx-auto w-50">
+
+    <h1>BancAndes</h1>
+    <p>Para filtrar por fecha se usa el formato YYYY-MM-DD (por ejemplo, "2024-04-18").</p>
+    <p>Para filtrar por rango de saldos formato saldo1-saldo2 (por ejemplo, "1-5000000").</p>
+
+    <div>
+        <form th:action="@{/filtrarCuentas2}" method="get">
+            <div class="mb-3">
+                <label for="tipoCuenta">Tipo de Cuenta:</label>
+                <input type="text" id="tipoCuenta" name="tipoCuenta" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="rangoSaldo">Rango de Saldo:</label>
+                <input type="text" id="rangoSaldo" name="rangoSaldo" class="form-control" placeholder="saldo1-saldo2">
+            </div>
+            <div class="mb-3">
+                <label for="fechaCreacion">Fecha de Creación:</label>
+                <input type="text" id="fechaCreacion" name="fechaCreacion" class="form-control" placeholder="YYYY-MM-DD">
+            </div>
+            <div class="mb-3">
+                <label for="fechaUltimoMovimiento">Fecha del Último Movimiento:</label>
+                <input type="text" id="fechaUltimoMovimiento" name="fechaUltimoMovimiento" class="form-control" placeholder="YYYY-MM-DD">
+            </div>
+            <div class="mb-3">
+                <label for="numDocumentoCliente">Número de documento del cliente:</label>
+                <input type="text" id="numDocumentoCliente" name="numDocumentoCliente" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+        </form>
+    </div>
+    <br/>
+
+</div>
+</body>
+</html>

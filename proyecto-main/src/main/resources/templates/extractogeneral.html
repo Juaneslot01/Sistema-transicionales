@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Extracto de Cuenta</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Extracto de Cuenta</h1>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Número de Cuenta</th>
+                    <th>Saldo al iniciar el mes</th>
+                    <th>Saldo después de las operaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td th:text="${cuenta.getNumCuenta()}"></td>
+                    <td th:text="${saldofinal}"></td>
+                    <td th:text="${saldoInicial}"></td>
+                </tr>
+            </tbody>
+                
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Tipo de Operación</th>
+                                    <th>Valor</th>
+                                    <th>Id Operación</th>
+                                    <th>Id Punto Atención</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <h2>Operaciones de Consignación o Retiro</h2>
+                                <tr th:each="operacion : ${operacionesCuentas}">
+                                    <td th:text="${operacion.fecha}"></td>
+                                    <td th:text="${operacion.tipoOperacion}"></td>
+                                    <td th:text="${operacion.valor}"></td>
+                                    <td th:text="${operacion.id}"></td>
+                                    <td th:text="${operacion.getPuntoAtencion().getId()}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+            </tbody>
+
+            <tbody>
+                <h2>Operaciones de Transferencia</h2>
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Número cuenta de origen</th>
+                                    <th>Número cuenta de destino</th>                                    
+                                    <th>Valor</th>
+                                    <th>Id transferencia</th>
+                                    <th>Id Punto Atención</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="operacion : ${operacionesTransferencias}">
+                                    <td th:text="${operacion.fecha}"></td>
+                                    <td th:text="${operacion.getCuentaOrigen().getNumCuenta()}"></td>
+                                    <td th:text="${operacion.getCuentaDestino().getNumCuenta()}"></td>
+                                    <td th:text="${operacion.valor}"></td>
+                                    <td th:text="${operacion.id}"></td>
+                                    <td th:text="${operacion.getPuntoAtencion().getId()}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+            </tbody>
+        </table>
+        <a href="/" class="btn btn-primary">Volver</a>
+    </div>
+</body>
+</html>

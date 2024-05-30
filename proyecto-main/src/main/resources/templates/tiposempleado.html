@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Empleado</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div>
+        <h1>Lista de Tipos de Empleado</h1>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <th:block th:each="tipo : ${tipos}">
+                <tr>
+                    <td th:text="${tipo.nombre}"></td>
+                    <td>
+                        <a th:href="@{/tipos/{nombre}/edit(nombre=${tipo.nombre})}">
+                            Editar
+                        </a>
+                        <a th:href="@{/tipos/{nombre}/delete(nombre=${tipo.nombre})}"
+                        onclick="return confirm('¿Estás seguro de borrar este tipo de empleado?')">
+                            Borrar
+                        </a>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+        <div>
+            <a th:href="@{/}" class="btn btn-primary">Volver Atrás</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuentas</title>
+    <link rel="stylesheet" type= "text/css" th:href= "@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div>
+        <h1>Lista de Cuentas</h1>
+        <table class= "table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Número de Cuenta</th>
+                    <th>Tipo de Cuenta</th>
+                    <th>Saldo</th>
+                    <th>Estado</th>
+                    <th>Fecha Última Transacción</th>
+                    <th>Cliente Asociado</th>
+                    <th>Fecha Creacion</th>
+                    <th>Id Oficina</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <th:block th:each="cuenta : ${cuentas}">
+                <tr>
+                    <td th:text="${cuenta.numCuenta}"></td>
+                    <td th:text="${cuenta.tipoCuenta}"></td>
+                    <td th:text="${cuenta.saldo}"></td>
+                    <td th:text="${cuenta.estado}"></td>
+                    <td th:text="${cuenta.fechaUltimaTransaccion}"></td>
+                    <td th:text="${cuenta.cliente.numeroDocumento}"></td>
+                    <td th:text="${cuenta.fechaCreacion}"></td>
+                    <td th:text="${cuenta.oficina.id}"></td>
+                    <td>
+                        <a th:href="@{/cuentas/{id}/edit(id=${cuenta.numCuenta})}">
+                            Editar
+                        </a>
+                        <a th:href="@{/cuentas/{id}/delete(id=${cuenta.numCuenta})}"
+                        onclick="return confirm('¿Estás seguro de borrar esta cuenta?')">
+                            Borrar
+                        </a>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+        <div>
+            <a th:href="@{/}" class="btn btn-primary">Volver Atrás</a>
+            <a th:href="@{cuentas/new}" class="btn btn-primary">Añadir Cuenta</a>
+        </div>
+    </div>
+</body>
+</html>
